@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mnPassingTest", "mnPassingTest.vcxproj", "{7A6B2AB9-7DE6-4E55-B957-638A29DF1151}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mnPassing", "..\mnPassing\mnPassing.vcxproj", "{47D0A63C-29D2-49CF-BAA9-BE80FCC409F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A6B2AB9-7DE6-4E55-B957-638A29DF1151}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A6B2AB9-7DE6-4E55-B957-638A29DF1151}.Debug|Win32.Build.0 = Debug|Win32
+		{7A6B2AB9-7DE6-4E55-B957-638A29DF1151}.Release|Win32.ActiveCfg = Release|Win32
+		{7A6B2AB9-7DE6-4E55-B957-638A29DF1151}.Release|Win32.Build.0 = Release|Win32
+		{47D0A63C-29D2-49CF-BAA9-BE80FCC409F0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47D0A63C-29D2-49CF-BAA9-BE80FCC409F0}.Debug|Win32.Build.0 = Debug|Win32
+		{47D0A63C-29D2-49CF-BAA9-BE80FCC409F0}.Release|Win32.ActiveCfg = Release|Win32
+		{47D0A63C-29D2-49CF-BAA9-BE80FCC409F0}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
