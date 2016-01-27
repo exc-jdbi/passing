@@ -13,15 +13,15 @@
 #define EXP32 extern "C" __declspec(dllexport)
 
 //Widestrings
-EXP32 int get_PwArrayW(int iSize,int iMin,int iMax,wchar_t ***ppOut,int **xLen);
-EXP32 int _stdcall getPwArrayW(int iSize,int iMin,int iMax,wchar_t ***ppOut,int **xLen);
+EXP32 int get_PwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen);
+EXP32 int _stdcall getPwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen);
 
 //Ansistrings
-EXP32 int get_PwArrayA(int iSize,int iMin,int iMax,char ***ppOut,int **xLen);
-EXP32 int _stdcall getPwArrayA(int iSize,int iMin,int iMax,char ***ppOut,int **xLen);
+EXP32 int get_PwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen);
+EXP32 int _stdcall getPwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen);
 
 //Passing Array to .Net
-EXP32 int _stdcall getPwArray(int iSize,int iMin,int iMax,void **ppOut,int **xLen);
+EXP32 int _stdcall getPwArray(int const iSize,int const iMin,int const iMax,void **ppOut,const int **xLen);
 
 //Garbage
 EXP32 bool start_Garbage();

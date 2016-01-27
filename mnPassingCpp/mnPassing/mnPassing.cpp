@@ -7,6 +7,7 @@
  *
  * mnPassing is Free and Opensource Software
 */
+
 #include "stdafx.h"
 #include <time.h>
 #include <vector>
@@ -30,12 +31,12 @@ inline bool checkLen(int const &max,int const &min){
 	if((max>0)&&(min>0)&&(max>min))return true;
 	return false;
 };
-int createPwArrayW(int &iSize,int &iMin,int &iMax,wchar_t ***ppOut,int **xLen){
+int createPwArrayW(const int &iSize,const int &iMin,const int &iMax,wchar_t ***ppOut,const int **xLen){
 	int ret=-1;
 	try{
 		if((iSize>0)&&(checkLen(iMax,iMin))&&(ppOut)&&(xLen)){
 			wchar_t alphanum[]=L"0123456789"
-							   L"!#%^&Ύ½Ό™ή‰Ζ€#θόδ$!$£{°§1*-+±'?Ψψ}[»²³$£/&%η¬›|‹Ά@©®χ«]*"
+							   L"*-+$/€"
 							   L"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 							   L"abcdefghijklmnopqrstuvwxyz";
 			if(!bRnd){activateSRand();}
@@ -80,12 +81,12 @@ int createPwArrayW(int &iSize,int &iMin,int &iMax,wchar_t ***ppOut,int **xLen){
 		return ret;
 	}
 }
-int createPwArrayA(int &iSize,int &iMin,int &iMax,char ***ppOut,int **xLen){
+int createPwArrayA(const int &iSize,const int &iMin,const int &iMax,char ***ppOut,const int **xLen){
 	int ret=-1;
 	try{
 		if((iSize>0)&&(checkLen(iMax,iMin))&&(ppOut)&&(xLen)){
 			char alphanum[]="0123456789"
-							"!#%^&Ύ½Ό™ή‰Ζ€#θόδ$!$£{°§1*-+±'?Ψψ}[»²³$£/&%η¬›|‹Ά@©®χ«]*"
+							"*-+$/€"
 							"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 							"abcdefghijklmnopqrstuvwxyz";
 			if(!bRnd){activateSRand();}
@@ -131,12 +132,12 @@ int createPwArrayA(int &iSize,int &iMin,int &iMax,char ***ppOut,int **xLen){
 		return ret;
 	}
 }
-int createPwArray(int iSize,int iMin,int iMax,void **ppOut,int **xLen){
+int createPwArray(const int &iSize,const int &iMin,const int &iMax,void **ppOut,const int **xLen){
 	int ret=-1;
 	try{
 		if((iSize>0)&&(checkLen(iMax,iMin))&&(ppOut)&&(xLen)){
 			wchar_t **bufferW1={0},***pOutW1=&bufferW1;
-			int *bufferLW1=0,**pOutLW1=&bufferLW1;
+			const int *bufferLW1=0,**pOutLW1=&bufferLW1;
 			int iSizeW1=createPwArrayW(iSize,iMin,iMax,pOutW1,pOutLW1);			
 			if((iSizeW1>0)&&(*pOutW1)&&(*pOutLW1)){
 				*ppOut=*pOutW1;
@@ -156,19 +157,19 @@ int createPwArray(int iSize,int iMin,int iMax,void **ppOut,int **xLen){
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
-int get_PwArrayW(int iSize,int iMin,int iMax,wchar_t ***ppOut,int **xLen){
+int get_PwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen){
 	return getPwArrayW(iSize,iMin,iMax,ppOut,xLen);
 }
-int _stdcall getPwArrayW(int iSize,int iMin,int iMax,wchar_t ***ppOut,int **xLen){
+int _stdcall getPwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen){
 	return createPwArrayW(iSize,iMin,iMax,ppOut,xLen);
 }
-int get_PwArrayA(int iSize,int iMin,int iMax,char ***ppOut,int **xLen){
+int get_PwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen){
 	return getPwArrayA(iSize,iMin,iMax,ppOut,xLen);
 }
-int _stdcall getPwArrayA(int iSize,int iMin,int iMax,char ***ppOut,int **xLen){
+int _stdcall getPwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen){
 	return createPwArrayA(iSize,iMin,iMax,ppOut,xLen);
 }
-int _stdcall getPwArray(int iSize,int iMin,int iMax,void **ppOut,int **xLen){
+int _stdcall getPwArray(int const iSize,int const iMin,int const iMax,void **ppOut,const int **xLen){
 	return createPwArray(iSize,iMin,iMax,ppOut,xLen);
 }
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
