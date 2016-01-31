@@ -43,7 +43,7 @@ int createPwArrayW(const int &iSize,const int &iMin,const int &iMax,wchar_t ***p
 			int iAlphanum=std::wcslen(alphanum);
 			
 			wchar_t **pOut=new wchar_t*[iSize];
-			memset(pOut,0,iSize);//thats right!!
+			memset(pOut,0,iSize*sizeof(wchar_t));//thats right!!
 			Garbage::setNews(pOut);
 
 			int *pXlen=new int[iSize];
@@ -53,7 +53,7 @@ int createPwArrayW(const int &iSize,const int &iMin,const int &iMax,wchar_t ***p
 			int i=0;
 			int itemLen=0;
 			for(;i<iSize;++i){
-				itemLen=(rand()%(iMax-iMin))+iMin;
+				itemLen=(rand()%((iMax+1)-iMin))+iMin;
 				if((itemLen>=iMin)&&(itemLen<iMax)){
 					pOut[i]=new wchar_t[itemLen+1];
 					wmemset(pOut[i],0,itemLen+1);
@@ -61,12 +61,12 @@ int createPwArrayW(const int &iSize,const int &iMin,const int &iMax,wchar_t ***p
 					pXlen[i]=itemLen;
 					for(int j=0;j<itemLen;++j){
 						random=(rand()%iAlphanum);
-						if(random>=iAlphanum){j-=1;continue;}
-						if(random<0){j-=1;continue;}
+						if(random>=iAlphanum){j--;continue;}
+						if(random<0){j--;continue;}
 						pOut[i][j]=alphanum[random];
-						if(pOut[i][j]==0){j-=1;}
+						if(pOut[i][j]==0){j--;}
 					}					
-				}else{i-=1;continue;}
+				}else{i--;continue;}
 			}
 			if((pOut)&&(i>0)){
 				*ppOut=pOut;
@@ -103,7 +103,7 @@ int createPwArrayA(const int &iSize,const int &iMin,const int &iMax,char ***ppOu
 			int i=0;
 			int itemLen=0;
 			for(;i<iSize;++i){
-				itemLen=(rand()%(iMax-iMin))+iMin;
+				itemLen=(rand()%((iMax+1)-iMin))+iMin;
 				if((itemLen>=iMin)&&(itemLen<iMax)){
 					pOut[i]=new char[itemLen+1];
 					memset(pOut[i],0,itemLen+1);
@@ -111,12 +111,12 @@ int createPwArrayA(const int &iSize,const int &iMin,const int &iMax,char ***ppOu
 					pXlen[i]=itemLen;
 					for(int j=0;j<itemLen;++j){
 						random=(rand()%iAlphanum);
-						if(random>=iAlphanum){j-=1;continue;}
-						if(random<0){j-=1;continue;}
+						if(random>=iAlphanum){j--;continue;}
+						if(random<0){j--;continue;}
 						pOut[i][j]=alphanum[random];
-						if(pOut[i][j]==0){j-=1;}
+						if(pOut[i][j]==0){j--;}
 					}
-				}else{i-=1;continue;}
+				}else{i--;continue;}
 			}
 			if((pOut)&&(i>0)){
 				*ppOut=pOut;
@@ -138,7 +138,7 @@ int createPwArray(const int &iSize,const int &iMin,const int &iMax,void **ppOut,
 		if((iSize>0)&&(checkLen(iMax,iMin))&&(ppOut)&&(xLen)){
 			wchar_t **bufferW1={0},***pOutW1=&bufferW1;
 			const int *bufferLW1=0,**pOutLW1=&bufferLW1;
-			int iSizeW1=createPwArrayW(iSize,iMin,iMax,pOutW1,pOutLW1);			
+			int iSizeW1=createPwArrayW(iSize,iMin,iMax,pOutW1,pOutLW1);
 			if((iSizeW1>0)&&(*pOutW1)&&(*pOutLW1)){
 				*ppOut=*pOutW1;
 				*xLen=*pOutLW1;
@@ -157,16 +157,16 @@ int createPwArray(const int &iSize,const int &iMin,const int &iMax,void **ppOut,
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
 /* ------------------------- ------------------------- ------------------------- ------------------------- */
-int get_PwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen){
+int get_PwArrayW(int const &iSize,int const &iMin,int const &iMax,wchar_t ***ppOut,const int **xLen){
 	return getPwArrayW(iSize,iMin,iMax,ppOut,xLen);
 }
-int _stdcall getPwArrayW(int const iSize,int const iMin,int const iMax,wchar_t ***ppOut,const int **xLen){
+int _stdcall getPwArrayW(int const &iSize,int const &iMin,int const &iMax,wchar_t ***ppOut,const int **xLen){
 	return createPwArrayW(iSize,iMin,iMax,ppOut,xLen);
 }
-int get_PwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen){
+int get_PwArrayA(int const &iSize,int const &iMin,int const &iMax,char ***ppOut,const int **xLen){
 	return getPwArrayA(iSize,iMin,iMax,ppOut,xLen);
 }
-int _stdcall getPwArrayA(int const iSize,int const iMin,int const iMax,char ***ppOut,const int **xLen){
+int _stdcall getPwArrayA(int const &iSize,int const &iMin,int const &iMax,char ***ppOut,const int **xLen){
 	return createPwArrayA(iSize,iMin,iMax,ppOut,xLen);
 }
 int _stdcall getPwArray(int const iSize,int const iMin,int const iMax,void **ppOut,const int **xLen){
